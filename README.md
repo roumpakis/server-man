@@ -15,6 +15,31 @@
 8. [Acknowledgements](#acknowledgements)
 
 ---
+> [!WARNING]
+> **You MUST limit CPU threads before importing NumPy / PyTorch / TensorFlow.**  
+> Otherwise, the limits may not take effect and performance can degrade.
+
+---
+
+### Option A — Inside Python (notebook or `.py` file)
+⚠️ Place this **at the very top** of your script or notebook cell, **before any imports**.
+
+```python
+import os
+
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+
+OMP_NUM_THREADS=1 \
+OPENBLAS_NUM_THREADS=1 \
+MKL_NUM_THREADS=1 \
+VECLIB_MAXIMUM_THREADS=1 \
+NUMEXPR_NUM_THREADS=1 \
+python your_script.py
+
 
 ## Introduction
 TITAN-Server utilize the Knot application, developed by CARV-ICS-FORTH (https://github.com/CARV-ICS-FORTH/knot) 
