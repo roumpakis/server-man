@@ -21,7 +21,7 @@
 
 ---
 
-### Option A — Inside Python (notebook or `.py` file)
+## Option A — Inside Python (notebook or `.py` file)
 ⚠️ Place this **at the very top** of your script or notebook cell, **before any imports**.
 
 ```python
